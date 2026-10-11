@@ -33,7 +33,7 @@ export class Timer {
 
   /** Remaining seconds (rounded) */
   get remaining() {
-    if (!this._running && !this._startedAt) return this.duration;
+    if (!this._running && !this._startedAt && this._elapsed === 0) return this.duration;
     const totalElapsedMs = this._elapsed + (this._running ? Date.now() - this._startedAt : 0);
     return Math.max(0, this.duration - Math.floor(totalElapsedMs / 1000));
   }
